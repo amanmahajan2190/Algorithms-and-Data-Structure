@@ -20,6 +20,16 @@ public class LinkedListOps {
         }
     }
 
+    public void addNodeFromFront(Node n){
+        if(top == null || end == null){
+            top=n;
+            end = n;
+        }else{
+            n.next = top;
+            top=n;
+        }
+    }
+
     public Node deleteFromEnd(){
         if(top==null||end==null){
             return null;
@@ -67,6 +77,14 @@ public class LinkedListOps {
         return i;
     }
 
+    public void printLinkedList(){
+        Node temp = top;
+        while(temp !=null){
+            System.out.print(temp.value+"-");
+            temp= temp.next;
+        }
+    }
+
     public void deleteAny(Node n){
         if(top==null){
             return;
@@ -85,14 +103,6 @@ public class LinkedListOps {
             }
         }
 
-    }
-
-    public void printLinkedList(){
-        Node temp = top;
-        while(temp !=null){
-            System.out.print(temp.value+"-");
-            temp= temp.next;
-        }
     }
 
 

@@ -14,7 +14,7 @@ public class DeleteMiddleNode {
         ops.addNode(new Node(2));
         ops.addNode(new Node(3));
         ops.addNode(new Node(4));
-       // ops.addNode(new Node(5));
+        // ops.addNode(new Node(5));
 
 
         ops.printLinkedList();
