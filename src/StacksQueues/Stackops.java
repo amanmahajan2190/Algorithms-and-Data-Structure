@@ -6,6 +6,7 @@ package StacksQueues;
 public class Stackops {
 
     Node top;
+    int elementCount;
 
     public Stackops(){
         top = null;
@@ -19,6 +20,7 @@ public class Stackops {
             node.next = top;
             top=node;
         }
+        elementCount++;
     }
 
     public  Node pop(){
@@ -27,17 +29,23 @@ public class Stackops {
         }else if(top.next==null){
             Node temp = top;
             top=null;
+            elementCount--;
             return temp;
         }else{
             Node temp = top;
             top = top.next;
             temp.next=null;
+            elementCount--;
             return  temp;
         }
     }
 
     public Node getTop(){
         return this.top;
+    }
+
+    public int getSize(){
+        return elementCount;
     }
 
     public boolean isEmpty(){
