@@ -1,5 +1,7 @@
 package BinaryTrees;
 
+import java.util.*;
+
 /**
  * Created by AMAN on 6/4/2016.
  */
@@ -23,7 +25,7 @@ public class LowestCommontAncestor {
             return root;
         }
         Node left = LCA(root.left,n1,n2);
-        Node right = LCA(root.left,n1,n2);
+        Node right = LCA(root.right,n1,n2);
         if(left.data == n1.data && right.data == n2.data){
             return root;
         }
@@ -39,11 +41,44 @@ public class LowestCommontAncestor {
 
     }
 
+    public Node LCAIterative(Node root, Node left, Node right){
+        Map<Node ,Node> childParentMap = new HashMap<Node, Node>();
+        Queue<Node> nodeQueue = new LinkedList<Node>();
+        nodeQueue.add(root);
+        childParentMap.put(root,null);
+        while((!childParentMap.containsKey(left) || !childParentMap.containsKey(right)) && nodeQueue.size()>0){
+            Node temp =nodeQueue.poll();
+            if(temp !=null){
+                if(temp.left !=null){
+                    childParentMap.put(temp.left,temp);
+                    nodeQueue.add(temp.left);
+                }
+                if(temp.right !=null){
+                    childParentMap.put(temp.right,temp);
+                    nodeQueue.add(temp.right);
+                }
+
+
+        }
+        }
+
+        Set<Node> nodeSet = new HashSet<Node>();
+        while(left!=null){
+            left = childParentMap.get(left);
+        }
+        while (!nodeSet.contains(right)){
+            right = childParentMap.get(right);
+        }
+        return right;
+        }
+
+
+
     public static void main(String[] args){
         LowestCommontAncestor ancestor = new LowestCommontAncestor();
         Node root = new Node(1);
         ancestor.createTree(root);
-        Node node = ancestor.LCA(root,new Node(7),new Node(5));
+        Node node = ancestor.LCAIterative(root,new Node(7),new Node(5));
         if(node == null){
             System.out.print("Ancestor not found");
         }else{

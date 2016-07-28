@@ -1,43 +1,69 @@
 package Arrays;
 
-import java.util.Comparator;
-import java.util.List;
-import java.util.PriorityQueue;
+import java.util.*;
 
 /**
  * Created by AMAN on 6/20/2016.
  */
-class NumberFrequency implements Comparator<NumberFrequency>{
+class NumberFrequency implements Comparable<NumberFrequency>{
     int number;
     int freq;
-    NumberFrequency(int i){
+    NumberFrequency(int i , int f){
         number = i;
-        freq=0;
+        freq=f;
     }
+    NumberFrequency(){}
+
+
+
 
     @Override
-    public int compare(NumberFrequency o1, NumberFrequency o2) {
-        if(o1.freq>o2.freq){
-            return 1;
-        }else if(o2.freq>o1.freq){
-            return -1;
-        }
-        return 0;
+    public int compareTo(final NumberFrequency o) {
+        return Integer.compare(this.freq,o.freq);
     }
+}
+public class HighestFrequencyElements {
 
-
-
-
-}public class HighestFrequencyElements {
     public List<Integer> topKFrequent(int[] nums, int k) {
-        Comparator<NumberFrequency> frequencyComparator = new NumberFrequency(nums.length);
-        PriorityQueue<NumberFrequency> queue = new PriorityQueue<NumberFrequency>(nums.length,frequencyComparator);
-        for(int i=0;i<nums.length;i++){
-            if(queue.contains(new NumberFrequency()))
+        Map<Integer,Integer> freqMap = new HashMap<Integer, Integer>();
+        PriorityQueue<NumberFrequency> queue = new PriorityQueue<NumberFrequency>(k);
+        for(int i: nums){
+            if (freqMap.containsKey(i)){
+                freqMap.put(i, freqMap.get(i)+1);
+            }else{
+                freqMap.put(i,1);
+            }
         }
 
+        for(int number : freqMap.keySet()){
+            if(queue.size()<k){
+                queue.add(new NumberFrequency(number,freqMap.get(number)));
+            }else{
+                if(freqMap.get(number)>queue.peek().freq){
+                    queue.remove();
+                    queue.add(new NumberFrequency(number,freqMap.get(number)));
+                }
+            }
+
+
+        }
+        List<Integer> integerList = new ArrayList<Integer>();
+        while(!queue.isEmpty()){
+            integerList.add(queue.remove().number);
+        }
+        return integerList;
 
     }
+
+    public static void main(String[] args){
+        HighestFrequencyElements elements = new HighestFrequencyElements();
+        int[] array = new int[]{1,1,1,2,2,3,3,3,3,3,3,3,3,5,5,5,5,5,4,4,4,1,1,1,1};
+        elements.topKFrequent(array,3);
+    }
+
+
+
+
 
 }
 

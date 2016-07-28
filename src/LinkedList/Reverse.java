@@ -1,5 +1,7 @@
 package LinkedList;
 
+import java.util.Stack;
+
 /**
  * Created by AMAN on 4/12/2016.
  */
@@ -41,7 +43,9 @@ public class Reverse {
 
     public static void main(String[] args){
         Reverse r = new Reverse();
-        r.createList();
+        Stack<Node>  nodes = new Stack<Node>();
+        
+         r.createList();
         Node top=r.Reverse(ops.top);
         while (newTop!=null){
             System.out.print(newTop.value+"-");

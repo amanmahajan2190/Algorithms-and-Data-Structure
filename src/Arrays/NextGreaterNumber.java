@@ -10,17 +10,17 @@ Start from end
 Find the element such that a[i]<a[i+1]
 Swap i with arr.length -1
 Sort i+1 to end*/
+
+import java.util.Arrays;
+
 /**
  * Created by AMAN on 11/5/2015.
  */
 public class NextGreaterNumber {
     //Using simple Bubble sort.Shame on me.
     public static void sort(int[] arr , int i , int j){
-        for(int k =i;k<=j-1;k++){
-            if(arr[k]>arr[k+1] ){
-                swap(arr,k,k+1);
-            }
-        }
+        Arrays.sort(arr, i, j+1);
+
     }
 
     public static void swap(int[] arr , int i , int j){
@@ -34,17 +34,53 @@ public class NextGreaterNumber {
         }
     }
 
+    private static  boolean startGreaterEnd(int[] a , int start , int end){
+        if(a[start]<a[end]){
+            swap(a,start,end);
+            sort(a,start+1, end);
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    private static int findMin(int a[] , int start , int end , int target){
+        int min = Integer.MAX_VALUE;
+        int index=0;
+        for(int i =start ; i<=end;i++){
+            if(a[i]>target && a[i]<min){
+                index = i;
+                min =a[i];
+            }
+
+
+
+        }
+        return index;
+
+    }
+
+
+
     public static void main(String[] args){
-        int[] arr = {1,0,3};
-        int start=0;
-        for(int i=arr.length-2;i>=0;i--){
-            if(arr[i]<arr[i+1]){
-                start=i;
-                swap(arr,i,arr.length-1);
+        int[] arr = {1,3,2};
+        int end = arr.length-1;
+        int start =end-1;
+        while(start>=0){
+            if(arr[start]<arr[end]){
+                int index = findMin(arr,start+1,arr.length-1,arr[start]);
+                swap(arr,start,index);
+                Arrays.sort(arr,start+1,arr.length);
                 break;
             }
+            start--;
+            end--;
         }
-        sort(arr,start+1,arr.length-1);
+        if(start<0){
+            Arrays.sort(arr,0,arr.length);
+        }
+
+          //  sort(arr,start+1,arr.length-1);
         printAray(arr);
     }
 }

@@ -1,16 +1,21 @@
+/*
 package Arrays;
 
+*/
 /**Write a function condense_meeting_times() that takes an array of
   meeting time ranges and returns an array of condensed ranges.
-* */
+* *//*
 
 
-import java.util.PriorityQueue;
+
+import java.util.Heap;
 import java.util.Stack;
 
+*/
 /**
  * Created by AMAN on 11/3/2015.
- */
+ *//*
+
 
 
 class Interval implements Comparable<Interval>{
@@ -44,7 +49,7 @@ public class MergingMeetings {
 
     public  static  void main(String[] args){
         Stack<Interval> intervalStack = new Stack<Interval>();
-        PriorityQueue<Interval> queue = new PriorityQueue<Interval>();
+        Heap<Interval> queue = new Heap<Interval>();
         queue.offer(new Interval( 0,1));
         queue.offer((new Interval(3,5)));
         queue.offer(new Interval(9,10));
@@ -84,3 +89,4 @@ public class MergingMeetings {
 
 
 }
+*/
