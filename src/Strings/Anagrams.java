@@ -17,8 +17,6 @@ public class Anagrams {
 
         char[] s_arr = s.toCharArray();
         char[] t_arr = t.toCharArray();
-        new HashSet<Integer>().
-
 
 
         Arrays.sort(s_arr);

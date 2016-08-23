@@ -27,6 +27,7 @@ public class Permute {
         }
     }
 
+
     public static void main(String[] args){
         Permute s = new Permute();
         int[] a = new int[]{1,2,3};

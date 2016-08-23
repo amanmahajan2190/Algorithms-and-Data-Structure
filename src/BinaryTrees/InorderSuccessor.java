@@ -1,10 +1,14 @@
+/*
 package BinaryTrees;
 
+import javax.swing.tree.TreeNode;
 import java.util.Stack;
 
+*/
 /**
  * Created by AMAN on 7/25/2016.
- */
+ *//*
+
 public class InorderSuccessor {
     public TreeNode inorderSuccessor(TreeNode root, TreeNode p) {
         if(root ==null){
@@ -61,3 +65,4 @@ public class InorderSuccessor {
         System.out.print(successor.inorderSuccessor(root,new TreeNode(2)).val);
     }
 }
+*/

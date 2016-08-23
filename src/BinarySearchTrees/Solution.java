@@ -5,9 +5,11 @@ package BinarySearchTrees;
  */
  class TreeNode {
          int val;
+        int count;
         TreeNode left;
         TreeNode right;
-        TreeNode(int x) { val = x; }
+        TreeNode(int x) { val = x;
+        count=1;}
 }
 
 public class Solution {

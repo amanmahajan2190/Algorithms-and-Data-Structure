@@ -14,6 +14,8 @@ class Interval {
 }
 public class MergeIntervals {
     public List<Interval> merge(List<Interval> intervals) {
+            
+
         Collections.sort(intervals, new Comparator<Interval>() {
             @Override
             public int compare(Interval o1, Interval o2) {
